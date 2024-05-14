@@ -21,6 +21,7 @@
     "@types/node": "^20.12.11",
     "fastify": "^4.27.0",
     "http-errors": "^2.0.0",
+    "mongodb": "^6.6.1",
     "nodemon": "^3.1.0"
   }
 }
