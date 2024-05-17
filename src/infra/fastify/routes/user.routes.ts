@@ -1,4 +1,4 @@
-import { UserController } from "../controllers/account.controller";
+import { UserController } from "../controllers/user.controller";
 import { CheckRoutesInterface, HTTPMethods } from "../interfaces/routes.interface";
 
 

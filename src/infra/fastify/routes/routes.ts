@@ -4,6 +4,7 @@ import { UserRoutes } from "./user.routes"
 import { TemplateRoutes } from "./template.routes"
 import { TransactionRoutes } from "./transaction.routes"
 import { DeploymentRoutes } from "./deployment.routes"
+import { AuthRoutes } from "./auth.routes"
 
 export class Routes {
     routes: RoutesInterface = []
