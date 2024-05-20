@@ -1,10 +1,24 @@
+import { FastifyReply, FastifyRequest } from "fastify"
+import { GetOneTemplateUseCase } from "../../../application/templates/queries/get-one-template.usecase"
+import { PrismaTemplateRepository } from "../../prisma/template.prisma.repository"
+
 export class TemplateController {
+
+    repositoryPG = new PrismaTemplateRepository()
+    getOneTemplateUseCase = new GetOneTemplateUseCase(this.repositoryPG)
+
+
     getAll(){
        throw new Error("Not Implemented")
     }
 
     getFreeTemplates(){
         throw new Error("Not Implemented")
+    }
+
+    async getOneById(request: FastifyRequest, reply: FastifyReply){
+        const { id } = request.params as { id: number };
+        const user = await this.getOneTemplateUseCase.execute(id)
     }
 
     getPayingTemplates(){

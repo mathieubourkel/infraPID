@@ -42,6 +42,12 @@ export class TemplateRoutes {
                 action: "getNotBoughtTemplates"
             },
             {
+                method: HTTPMethods.GET,
+                path: "/templates/:id",
+                controller: this.controller,
+                action: "getOneById"
+            },
+            {
                 method: HTTPMethods.POST,
                 path: "/template",
                 controller: this.controller,

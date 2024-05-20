@@ -1,9 +1,9 @@
+import { Template } from "../entities/template";
+
 export interface TemplateRepository {
-
-    save<T>(template: T): void;
-    update<T>(template: T): void;
-    delete(template: string): void;
-
-    getAllTemplate<T>(): Promise<T[]>;
-    getOneTemplate<T>(idTemplate: string): Promise<T | null>;
+    save(template: Template): void;
+    update(template: Template): void;
+    delete(template: Template): Promise<void>;
+    getAllTemplate<T, O>(options?: O): Promise<T[]>;
+    getOneTemplate<O>(id: number, options?: O): Promise<Template>;
 }

@@ -1,5 +1,6 @@
+
 import { TemplateRepository } from "../../domain/repositories/template.repository";
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, Template} from '@prisma/client'
 
 export class PrismaTemplateRepository implements TemplateRepository {
     prisma: PrismaClient
@@ -8,12 +9,12 @@ export class PrismaTemplateRepository implements TemplateRepository {
         this.prisma = new PrismaClient()
     }
 
-    async getAllTemplate<GetTemplateDto>(): Promise<GetTemplateDto[]> {
+    async getAllTemplate<Template>(): Promise<Template[]> {
         return await this.prisma.template.findMany()
     }
 
-    async getOneTemplate<GetTemplateDto>(idUser: string): Promise<GetTemplateDto |null> {
-        return await this.prisma.template.findMany()
+    async getOneTemplate(id: number): Promise<Template> {
+        return await this.prisma.template.findFirst()
     }
 
     async save<CreateTemplateDto>(template: CreateTemplateDto): Promise<void> {
@@ -24,7 +25,7 @@ export class PrismaTemplateRepository implements TemplateRepository {
         return await this.prisma.template.update()
     }
 
-    async delete(id: string): Promise<void> {
+    async delete(template: CreateTemplateDto): Promise<void> {
         return await this.prisma.template.delete()
     }
 }
