@@ -1,0 +1,17 @@
+export enum AwsResourceEnum {
+    EC2 = "aws_instance",
+    S3 = "aws_s3_bucket",
+    DYNAMO_DB = "aws_dynamo_db_table",
+    CLOUDFRONT = "aws_cloudfront_distribution",
+    SECURITY_GROUP = "aws_security_group",
+    RDS = "aws_rds_instance",
+    ECS = "aws_ecs_cluster",
+    LAUNCH_CONFIG = "aws_launch_configuration",
+    VPC = "aws_vpc",
+    SUBNET = "aws_subnet",
+    ASG = "aws_auto_scaling_group",
+    DB_SUBNET = "aws_db_subnet_group",
+    DOC_DB_CLUSTER = "aws_documentdb_cluster",
+    DOC_DB_CLUS_INSTANCE = "aws_documentdb_cluster_instance",
+    DOC_DB_INSTANCE = "aws_db_instance",
+}

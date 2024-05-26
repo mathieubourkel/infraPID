@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "prisma": {
-    "schema": "src/infra/prisma/schema.prisma"
+    "schema": "adapters/driven/prisma/schema.prisma"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/infra/fastify/server.ts"
+    "dev": "nodemon adapters/driving/fastify/server.ts"
   },
   "keywords": [],
   "author": "",
