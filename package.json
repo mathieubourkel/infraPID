@@ -24,6 +24,8 @@
     "@prisma/client": "^5.14.0",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20.12.11",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "fastify": "^4.27.0",
     "http-errors": "^2.0.0",
     "mongodb": "^6.6.1",

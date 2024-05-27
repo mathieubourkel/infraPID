@@ -1,25 +1,25 @@
-export interface IAzureVPC {
+export interface IAzureVpc {
     name?: string;
     location?: string;
     resource_group_name?: string;
     address_prefixes?: string
 }
 
-export interface IAzureVPCSub {
+export interface IAzureVpcSub {
     name?: string;
     virtual_network_id?:string
     resource_group_name?: string;
     address_prefixes?: string
 }
 
-export interface IAzureVPCSg {
+export interface IAzureVpcSg {
     name?: string;
     location?: string;
     resource_group_name?: string;
     rule?:string
 }
 
-export interface IAzureVM {
+export interface IAzureVm {
     name?: string;
     location?: string;
     resource_group_name?: string;
@@ -95,6 +95,3 @@ export interface IAzureFwRule {
     name?: string;
     location?: string;
 }
-
-export type IAzureResourceAttributes = IAzureVPC | IAzureVPCSub | IAzureVPCSg | IAzureVM | IAzureStorage | IAzureMsSqlServer | IAzureMsSqlDb | 
-IAzureCosmosDbAcc | IAzureCosmosDb | IAzureCosmosDbContainer | IAzureRedis | IAzureFwRule

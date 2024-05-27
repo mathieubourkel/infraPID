@@ -15,37 +15,43 @@ export class DeploymentRoutes {
                 method: HTTPMethods.GET,
                 path: "/deployments/all",
                 controller: this.controller,
-                action: "getAll"
+                action: "getAll",
+                middlewares: []
             },
             {
                 method: HTTPMethods.GET,
                 path: "/deployments/free",
                 controller: this.controller,
-                action: "getDeploymentsByUser"
+                action: "getDeploymentsByUser",
+                middlewares: []
             },
             {
                 method: HTTPMethods.GET,
                 path: "/deployment/:id",
                 controller: this.controller,
-                action: "getOne"
+                action: "getOne",
+                middlewares: []
             },
             {
                 method: HTTPMethods.POST,
                 path: "/deployment",
                 controller: this.controller,
-                action: "add"
+                action: "add",
+                middlewares: []
             },
             {
                 method: HTTPMethods.PUT,
                 path: "/deployment/:id",
                 controller: this.controller,
-                action: "modify"
+                action: "modify",
+                middlewares: []
             },
             {
                 method: HTTPMethods.DELETE,
                 path: "/deployment/:id",
                 controller: this.controller,
-                action: "remove"
+                action: "remove",
+                middlewares: []
             }
         ]
     }

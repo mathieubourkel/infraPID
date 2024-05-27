@@ -1,64 +1,79 @@
-import { TemplateController } from "../controllers/template.controller";
+import { ArchitectureController } from "../controllers/architecture.controller";
 import { CheckRoutesInterface, HTTPMethods } from "../interfaces/routes.interface";
 
 
 export class TemplateRoutes {
-    private readonly controller: TemplateController
+    private readonly controller: ArchitectureController
 
     constructor(){
-        this.controller = new TemplateController()
+        this.controller = new ArchitectureController()
     }
 
-    getRoutes():CheckRoutesInterface<TemplateController> {
+    getRoutes():CheckRoutesInterface<ArchitectureController> {
         return [
             {
                 method: HTTPMethods.GET,
                 path: "/templates/all",
                 controller: this.controller,
-                action: "getAll"
+                action: "getAll",
+                middlewares: []
+            },
+            {
+                method: HTTPMethods.POST,
+                path: "/templates/create-infra",
+                controller: this.controller,
+                action: "createInfra",
+                middlewares: []
             },
             {
                 method: HTTPMethods.GET,
                 path: "/templates/free",
                 controller: this.controller,
-                action: "getFreeTemplates"
+                action: "getFreeTemplates",
+                middlewares: []
             },
             {
                 method: HTTPMethods.GET,
                 path: "/templates/paying",
                 controller: this.controller,
-                action: "getPayingTemplates"
+                action: "getPayingTemplates",
+                middlewares: []
             },
             {
                 method: HTTPMethods.GET,
                 path: "/templates/boughts",
                 controller: this.controller,
-                action: "getAlreadyBoughtTemplates"
+                action: "getAlreadyBoughtTemplates",
+                middlewares: []
             },
             {
                 method: HTTPMethods.GET,
                 path: "/templates/no-boughts",
                 controller: this.controller,
-                action: "getNotBoughtTemplates"
+                action: "getNotBoughtTemplates",
+                middlewares: []
             },
             {
                 method: HTTPMethods.POST,
                 path: "/template",
                 controller: this.controller,
-                action: "add"
+                action: "add",
+                middlewares: []
             },
 
             {
                 method: HTTPMethods.PUT,
                 path: "/template/:id",
                 controller: this.controller,
-                action: "modify"
+                action: "modify",
+                middlewares: []
             },
             {
                 method: HTTPMethods.DELETE,
                 path: "/template/:id",
                 controller: this.controller,
-                action: "remove"
+                action: "remove",
+                middlewares: []
             }
         ]
     }

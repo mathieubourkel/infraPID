@@ -1,36 +1,18 @@
-import { ProvidersEnum } from "../enums/providers.enum"
-import { IProvider, IProviderAWS, IProviderAzure, IProviderGoogle } from "../interfaces/provider.interface"
+import {  ProviderAttributes, ProvidersEnum, ProvidersMap } from "../enums/providers.enum"
 
-export abstract class Provider {
-    private readonly name: ProvidersEnum
-    private attributes: IProvider
+export class Provider<T extends ProvidersEnum> {
+    private readonly name: string
+    private attributes: ProviderAttributes[T]
 
-    constructor(name: ProvidersEnum, attributes: IProvider){
-        this.name = name
+    constructor(provider: T, attributes: ProviderAttributes[T]){
+        this.name = ProvidersMap[provider]
         this.attributes = attributes
     }
 
     buildProvider(): string {
-        let buildAttributes = JSON.stringify(this.attributes)
-        return `provider "${this.name}" ${buildAttributes.replace(/:/g, '=')} `
+        const buildAttributes = JSON.stringify(this.attributes).replace(/:/g, '=');
+        return `provider "${this.name}" ${buildAttributes} `
     }
 }
 
-
-export class AwsProvider extends Provider {
-    constructor(attributes: IProviderAWS){
-        super(ProvidersEnum.AWS, attributes)
-    }
-}
-
-export class AzureProvider extends Provider {
-    constructor(attributes: IProviderAzure){
-        super(ProvidersEnum.AZURE, attributes)
-    }
-}
-
-export class GoogleProvider extends Provider {
-    constructor(attributes: IProviderGoogle){
-        super(ProvidersEnum.GOOGLE, attributes)
-    }
-}
+//const toto = new Provider(ProvidersEnum.AWS, {features: "aa", region: "aa"})

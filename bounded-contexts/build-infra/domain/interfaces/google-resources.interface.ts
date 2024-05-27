@@ -1,10 +1,10 @@
-export interface IVPC {
+export interface IGCPVPC {
     name?:string
     project?: string
     region?: string
 }
 
-export interface ISubVPC {
+export interface IGCPSubVPC {
     name?:string
     project?: string
     region?: string
@@ -12,7 +12,7 @@ export interface ISubVPC {
     network?: string
 }
 
-export interface IFW {
+export interface IGCPFW {
     name?:string
     project?: string
     region?: string
@@ -20,7 +20,7 @@ export interface IFW {
     allow?: string
 }
 
-export interface IVMGroup{
+export interface IGCPVMGroup{
     name?: string;
     base_instance_name?: string;
     zone?: string;
@@ -28,7 +28,7 @@ export interface IVMGroup{
 }
 
 
-export interface IVMTemplate {
+export interface IGCPVMTemplate {
     name?:string
     project?: string
     region?: string
@@ -37,7 +37,7 @@ export interface IVMTemplate {
     network_interface?: string
 }
 
-export interface ICache {
+export interface IGCPCache {
     name?:string
     project?: string
     region?: string
@@ -47,19 +47,17 @@ export interface ICache {
     instance_id?: string
 }
 
-export interface IBucket {
+export interface IGCPBucket {
     name?:string
     project?: string
     region?: string
     storage_class?: string
 }
 
-export interface IDB {
+export interface IGCPDB {
     name?:string
     project?: string
     region?: string
     instance_type?: string
     database_version?:string
 }
-
-export type IGoogleResourceAttributes = IVPC | ISubVPC | IFW | IVMGroup | IVMTemplate | ICache | IBucket | IDB

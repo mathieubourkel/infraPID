@@ -1,16 +1,22 @@
-interface IBaseProvider {
+import { Provider } from "../entities/provider"
+import { ProvidersEnum } from "../enums/providers.enum"
+
+export interface IProviderGoogle {
+    project: string
     region: string
     alias?:string
 }
 
-export interface IProviderGoogle extends IBaseProvider {
-    project: string
+export interface IProviderAWS {
+    region: string
+    alias?:string
 }
 
-export interface IProviderAWS extends IBaseProvider {}
-
-export interface IProviderAzure extends IBaseProvider {
+export interface IProviderAzure {
     features: string
+    region: string
+    alias?:string
 }
 
-export type IProvider = IProviderAWS | IProviderAzure | IProviderGoogle
+export type IProvider = Provider<ProvidersEnum>
+export type IProviders = Provider<ProvidersEnum>[]

@@ -21,16 +21,16 @@ export class Routes {
 
     init(fastify: FastifyInstance, options?: any) {
         this.routes.forEach((route: RouteInterface) => {
-            const {method, path, controller, action} = route
+            const {method, path, controller, action, middlewares} = route
         
-            fastify[method](path, async(req: FastifyRequest, reply: FastifyReply) => {
-                try {
-                    const result = await controller[action](req, reply, options)
-                    reply.code(200).send(result)
-                } catch (error) {
-                    req.log.error(error);
-                    reply.code(500).send(error)
-                }
+            fastify[method](path, {preHandler : middlewares}, async(req: FastifyRequest, reply: FastifyReply) => {
+                    try {
+                        const result = await controller[action](req, reply, options)
+                        reply.code(200).send({message: result, date: new Date()})
+                    } catch (error) {
+                        req.log.error(error);
+                        reply.code(500).send(error)
+                    }
             })
         })
     }

@@ -15,19 +15,22 @@ export class UserRoutes {
                 method: HTTPMethods.GET,
                 path: "/user",
                 controller: this.controller,
-                action: "getOne"
+                action: "getOne",
+                middlewares: []
             },
             {
                 method: HTTPMethods.PUT,
                 path: "/user/:id",
                 controller: this.controller,
-                action: "modify"
+                action: "modify",
+                middlewares: []
             },
             {
                 method: HTTPMethods.DELETE,
                 path: "/user/:id",
                 controller: this.controller,
-                action: "delete"
+                action: "delete",
+                middlewares: []
             }
         ]
     }

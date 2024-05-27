@@ -3,6 +3,7 @@ export interface RouteInterface {
     path: string,
     controller: any
     action: string
+    middlewares: []
 }
 
 export interface CheckRouteInterface<T>{
@@ -10,6 +11,7 @@ export interface CheckRouteInterface<T>{
     path: string,
     controller: T,
     action: keyof T,
+    middlewares: []
 }
 
 export type RoutesInterface = RouteInterface[]

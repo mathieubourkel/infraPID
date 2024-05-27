@@ -15,13 +15,15 @@ export class TransactionRoutes {
                 method: HTTPMethods.GET,
                 path: "/transactions/:idUser",
                 controller: this.controller,
-                action: "getManyByUser"
+                action: "getManyByUser",
+                middlewares: []
             },
             {
                 method: HTTPMethods.POST,
                 path: "/transaction",
                 controller: this.controller,
-                action: "add"
+                action: "add",
+                middlewares: []
             }
         ]
     }

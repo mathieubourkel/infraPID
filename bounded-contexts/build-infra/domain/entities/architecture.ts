@@ -1,7 +1,8 @@
 import { ArchitectureStatus } from "../enums/architecture.status.enum"
-import { BaseResource } from "./base.resource"
 import { ProvidersEnum } from "../enums/providers.enum"
-import { Ec2AwsResource, S3AwsResource } from "./aws-resources"
+import { ResourceEnum } from "../enums/resources.enum"
+import { IResource, IResources } from "../interfaces/resource-attributes.interface"
+import { Resource } from "./resource"
 
 export class Architecture {
     private readonly id?: number
@@ -9,9 +10,9 @@ export class Architecture {
     private readonly provider: ProvidersEnum
     private readonly description: string
     readonly name: string
-    private resources: BaseResource[]
+    private resources: IResources
 
-    constructor(status: ArchitectureStatus, provider: ProvidersEnum, description: string, name: string, resources: BaseResource[], id?: number){
+    constructor(status: ArchitectureStatus, provider: ProvidersEnum, description: string, name: string, resources: IResources, id?: number){
         this.id = id
         this.provider = provider
         this.status = status
@@ -24,18 +25,18 @@ export class Architecture {
         return {id: this.id, status: this.status, provider: this.provider, description: this.description, name: this.name}
     }
 
-    getAllResources(): BaseResource[]{
+    getAllResources(): IResources{
         return this.resources
     }
 
-    addResource(resource: BaseResource | BaseResource[]): void {
+    addResource(resource: IResource | IResources): void {
         if (Array.isArray(resource)) resource.map((resource) => this.resources.push(resource))
         else this.resources.push(resource)    
     }
 
-    removeResource(resource: BaseResource | BaseResource[]): void {
+    removeResource(resource: IResource | IResources): void {
         if (Array.isArray(resource)) {
-            resource.map((resource) => {
+            resource.map((resource: IResource) => {
                 this.resources = this.resources.filter(res => res !== resource)
             })
         } else {
@@ -44,5 +45,5 @@ export class Architecture {
     }
 
 }
-
-//const archi = new Architecture(ArchitectureStatus.FREE_TIERS, ProvidersEnum.AWS, "dee", "aa", [res1, res2, res3, res4], 3)
+// const res1 = new Resource(ResourceEnum.AWS_S3, {bucket: "aa", acl: "vf"})
+// const archi = new Architecture(ArchitectureStatus.FREE_TIERS, ProvidersEnum.AWS, "dee", "aa", [res1], 3)

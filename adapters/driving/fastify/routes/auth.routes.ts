@@ -15,13 +15,15 @@ export class AuthRoutes {
                 method: HTTPMethods.GET,
                 path: "/auth/login",
                 controller: this.controller,
-                action: "login"
+                action: "login",
+                middlewares: []
             },
             {
                 method: HTTPMethods.GET,
                 path: "/auth/refreshToken",
                 controller: this.controller,
-                action: "refreshToken"
+                action: "refreshToken",
+                middlewares: []
             }
         ]
     }
