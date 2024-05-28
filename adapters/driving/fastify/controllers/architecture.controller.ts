@@ -5,6 +5,7 @@ import { Architecture } from "../../../../bounded-contexts/build-infra/domain/en
 import { CreateFileInfraUseCase } from "../../../../bounded-contexts/build-infra/app/use-cases/create-terraform.usecase"
 import { ArchitectureDto } from "../../../../bounded-contexts/build-infra/app/dto/architecture.dto"
 import { ProviderDto } from "../../../../bounded-contexts/build-infra/app/dto/provider.dto"
+import { ResourceDto } from "../../../../bounded-contexts/build-infra/app/dto/resource.dto"
 
 export class ArchitectureController {
 
@@ -19,10 +20,10 @@ export class ArchitectureController {
         throw new Error("Not Implemented")
     }
 
-    async createInfra(req: FastifyRequest<{Body: {providers: ProviderDto[], architecture: ArchitectureDto}}>): Promise<string>{
+    async createInfra(req: FastifyRequest<{Body: {providers: ProviderDto[], resources: ResourceDto[]}}>): Promise<string>{
         try {
-            const {providers, architecture} = req.body
-            await this.createFileInfraUseCase.execute(providers, architecture)
+            const {providers, resources} = req.body
+            await this.createFileInfraUseCase.execute(providers, resources)
             return "FILE CREATED"
         } catch (error) {
             throw error

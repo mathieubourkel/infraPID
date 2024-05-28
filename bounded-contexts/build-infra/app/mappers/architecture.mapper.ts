@@ -10,11 +10,11 @@ export class ArchitectureMapper {
         return new Architecture(dto.status, dto.provider, dto.description, dto.name, dto.resources, dto.id)
     }
 
-    static toDto(body: ArchitectureDto){
+    static toDto(body: ArchitectureDto): ArchitectureDto{
         return new ArchitectureDto(body.status, body.provider, body.description, body.name, body.resources)
     }
 
-    static toDtoWithId(body: ArchitectureDto){
+    static toDtoWithId(body: ArchitectureDto): ArchitectureDto{
         return new ArchitectureDto(body.status, body.provider, body.description, body.name, body.resources, body.id)
     }
 }

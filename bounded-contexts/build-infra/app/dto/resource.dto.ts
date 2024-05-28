@@ -1,10 +1,14 @@
-import { ResourceEnum, ResourceMap } from "../../domain/enums/resources.enum";
+import { ResourceEnum } from "../../domain/enums/resources.enum";
 import { ResourceAttributes } from "../../domain/interfaces/resource-attributes.interface";
 
-export interface RessourceDto {
+export class ResourceDto {
 
-    resourceType: typeof ResourceMap[ResourceEnum], 
-    name: string, 
-    attributes: ResourceAttributes[ResourceEnum]
+    constructor(
+        public resourceType: ResourceEnum,
+        public attributes: ResourceAttributes[ResourceEnum],
+        public name?: string
+    ){}
+
+    
 
 }

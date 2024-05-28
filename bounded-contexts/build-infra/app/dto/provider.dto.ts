@@ -1,6 +1,9 @@
 import { ProviderAttributes, ProvidersEnum } from "../../domain/enums/providers.enum"
 
-export interface ProviderDto {
-    name: string
-    attributes: ProviderAttributes[ProvidersEnum]
+export class ProviderDto {
+    
+    constructor(
+        public name: ProvidersEnum,
+        public attributes: ProviderAttributes[ProvidersEnum]
+    ){}
 }

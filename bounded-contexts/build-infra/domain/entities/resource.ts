@@ -1,5 +1,6 @@
 import {  ResourceEnum, ResourceMap } from "../enums/resources.enum"
 import { ResourceAttributes } from "../interfaces/resource-attributes.interface"
+import { transformToTerraform } from "../utils/transformJsonToTerraform"
 
 
 export class Resource<T extends ResourceEnum> {
@@ -14,10 +15,7 @@ export class Resource<T extends ResourceEnum> {
     }
 
     buildResource(): string {
-        let buildAttribute = JSON.stringify(this.attributes)
-        return `resource "${this.resourceType}" "${this.name}" ${buildAttribute.replace(/:/g, '=')} `
+        return `resource "${this.resourceType}" "${this.name}" {\n${transformToTerraform(this.attributes)}`
     }
 
 }
-
-const re1 = new Resource(ResourceEnum.AWS_S3, {acl: "a", bucket: "a"})

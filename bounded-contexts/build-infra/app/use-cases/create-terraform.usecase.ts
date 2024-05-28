@@ -1,27 +1,24 @@
-import { Architecture } from "../../domain/entities/architecture"
-import { Provider } from "../../domain/entities/provider"
 import { beginTerraFormFileProvidersRequired } from "../../domain/enums/providers.enum"
-import { IProvider, IProviders } from "../../domain/interfaces/provider.interface"
-import { IResource } from "../../domain/interfaces/resource-attributes.interface"
 import { BuildInfraRepository } from "../../domain/repositories/build-infra.repository"
-import { ArchitectureDto } from "../dto/architecture.dto"
 import { ProviderDto } from "../dto/provider.dto"
-import { ArchitectureMapper } from "../mappers/architecture.mapper"
+import { ResourceDto } from "../dto/resource.dto"
+import { ProviderMapper } from "../mappers/provider.mapper"
+import { ResourceMapper } from "../mappers/resource.mapper"
 
 export class CreateFileInfraUseCase {
 
     constructor(private buildInfraRepository: BuildInfraRepository){}
 
-    async execute(providersDto: ProviderDto[], architectureDto: ArchitectureDto): Promise<void> {
+    async execute(providersDto: ProviderDto[], resourcesDto: ResourceDto[]): Promise<void> {
         let tmpFile: string = beginTerraFormFileProvidersRequired
-        const architecture = ArchitectureMapper.toDomain(architectureDto)
-        providersDto.map((provider: ProviderDto) => {
-            tmpFile+= JSON.stringify(provider)
+        providersDto.map((providerDto: ProviderDto) => {
+            const provider = ProviderMapper.toDomaine(providerDto)
+            tmpFile+= provider.buildProvider()
         })
-        architecture.getAllResources().map((resource: IResource) => {
+        resourcesDto.map((resourceDto: ResourceDto) => {
+            const resource = ResourceMapper.toDomaine(resourceDto)
             tmpFile+= resource.buildResource()
         })
-        console.log(tmpFile)
         await this.buildInfraRepository.saveTerraformFile(tmpFile)
     }
 }
