@@ -19,10 +19,10 @@ export class TemplateRoutes {
                 middlewares: []
             },
             {
-                method: HTTPMethods.POST,
-                path: "/templates/create-infra",
+                method: HTTPMethods.GET,
+                path: "/template/:id",
                 controller: this.controller,
-                action: "createInfra",
+                action: "getArchiTemplateById",
                 middlewares: []
             },
             {
@@ -37,20 +37,6 @@ export class TemplateRoutes {
                 path: "/templates/paying",
                 controller: this.controller,
                 action: "getPayingTemplates",
-                middlewares: []
-            },
-            {
-                method: HTTPMethods.GET,
-                path: "/templates/boughts",
-                controller: this.controller,
-                action: "getAlreadyBoughtTemplates",
-                middlewares: []
-            },
-            {
-                method: HTTPMethods.GET,
-                path: "/templates/no-boughts",
-                controller: this.controller,
-                action: "getNotBoughtTemplates",
                 middlewares: []
             },
             {

@@ -1,10 +1,10 @@
 import { ArchitectureRepository } from "../../domain/repositories/architecture.repository"
 
-export class GetAllArchiTemplateUseCase {
+export class GetArchiTemplateByOptionsUseCase {
 
     constructor(private architectureRepository: ArchitectureRepository){}
 
-    async execute(): Promise<void> {
-        await this.architectureRepository.getAllArchis()
+    async execute(options: {}): Promise<void> {
+        await this.architectureRepository.getArchisByOptions(options)
     }
 }

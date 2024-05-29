@@ -2,12 +2,12 @@ import { ArchitectureRepository } from "../../domain/repositories/architecture.r
 import { ArchitectureDto } from "../dto/architecture.dto"
 import { ArchitectureMapper } from "../mappers/architecture.mapper"
 
-export class UpdateArchiTemplateUseCase {
+export class AddArchiTemplateUseCase {
 
     constructor(private architectureRepository: ArchitectureRepository){}
 
     async execute(architectureDto: ArchitectureDto): Promise<void> {
         const architecture = ArchitectureMapper.toDomain(architectureDto)
-        await this.architectureRepository.updateTemplateFromPersistence(architecture)
+        await this.architectureRepository.addTemplateToPersistence(architecture)
     }
 }
