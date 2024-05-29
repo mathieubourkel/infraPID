@@ -27,20 +27,20 @@ provider "azurerm" {
     cici = "aa"
 }
 
-resource "aws_instance" "aws_instance_infraPID_976920" {
-    coucou = "lehibou"
+resource "aws_instance" "aws_instance_infraPID_79817" {
+    coucou = "aa"
 }
 
-resource "aws_instance" "aws_instance_infraPID_260666" {
-    coucou = "lehibou"
-    coucou2 = "lehibou"
-    coucou3 = "lehibou"
+resource "aws_instance" "aws_instance_infraPID_328102" {
+    coucou = "aa"
+    coucou2 = "bb"
+    coucou3 = "cc"
     coucou4 {
-        caca = "le boa"
+        coucou5 = "dd"
     }
 }
 
-resource "aws_instance" "aws_instance_infraPID_555555" {
-    coucou = "lehibou"
+resource "aws_instance" "aws_instance_infraPID_444793" {
+    coucou = "aa"
 }
 
