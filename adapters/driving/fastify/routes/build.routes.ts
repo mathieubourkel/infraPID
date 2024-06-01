@@ -3,11 +3,7 @@ import { CheckRoutesInterface, HTTPMethods } from "../interfaces/routes.interfac
 
 
 export class BuildRoutes {
-    private readonly controller: BuildController
-
-    constructor(){
-        this.controller = new BuildController()
-    }
+    private readonly controller = new BuildController()
 
     getRoutes():CheckRoutesInterface<BuildController> {
         return [

@@ -8,6 +8,6 @@ export class UpdateArchiTemplateUseCase {
 
     async execute(architectureDto: ArchitectureDto): Promise<void> {
         const architecture = ArchitectureMapper.toDomain(architectureDto)
-        await this.architectureRepository.updateTemplateFromPersistence(architecture)
+        await this.architectureRepository.updateTemplateFromPersistence(3)
     }
 }

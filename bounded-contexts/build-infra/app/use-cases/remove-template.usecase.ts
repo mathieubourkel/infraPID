@@ -8,6 +8,6 @@ export class RemoveArchiTemplateUseCase {
 
     async execute(architectureDto: ArchitectureDto): Promise<void> {
         const architecture = ArchitectureMapper.toDomain(architectureDto)
-        await this.architectureRepository.removeTemplateFromPersistence(architecture)
+        await this.architectureRepository.removeTemplateFromPersistence(3)
     }
 }

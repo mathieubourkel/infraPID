@@ -1,0 +1,96 @@
+org: mbourkel
+
+app: infrapid
+service: infrapid-archi
+stages:
+  dev:
+    region: eu-west-3
+  prod:
+    region: eu-west-3
+  
+
+package:
+  individually: true # Permet de créer un package pour chaque fonction
+
+custom:
+  esbuild:
+    bundle: true
+    minify: true
+    sourcemap: true
+    external:
+      - aws-sdk
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: eu-west-3
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+        - dynamodb:GetItem
+        - dynamodb:Scan
+        - dynamodb:Query
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: arn:aws:dynamodb:eu-west-3:066669404296:table/${self:service}-architectureTable-${sls:stage}
+
+  environment:
+    DYNAMODB_TABLE: ${self:service}-architectureTable-${sls:stage}
+
+functions:
+  getAll:
+    handler: getAllArchiLambda.handler
+    events:
+      - httpApi:
+          path: /templates/all
+          method: get
+
+
+  getOneById:
+    handler: getOneByIdArchiLambda.handler
+    events:
+      - httpApi:
+          path: /template/:id
+          method: get
+
+
+  add:
+    handler: addArchiLambda.handler
+    events:
+      - httpApi:
+          path: /template
+          method: post
+
+
+  delete:
+    handler: deleteArchiLambda.handler
+    events:
+      - httpApi:
+          path: /template/:id
+          method: delete
+
+
+  update:
+    handler: updateArchiLambda.handler
+    events:
+      - httpApi:
+          path: /template/:id
+          method: put
+
+
+
+resources:
+  Resources:
+    ArchitectureTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        TableName: ${self:service}-architectureTable-${sls:stage}
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

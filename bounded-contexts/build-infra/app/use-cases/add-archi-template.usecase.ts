@@ -6,8 +6,13 @@ export class AddArchiTemplateUseCase {
 
     constructor(private architectureRepository: ArchitectureRepository){}
 
-    async execute(architectureDto: ArchitectureDto): Promise<void> {
-        const architecture = ArchitectureMapper.toDomain(architectureDto)
-        await this.architectureRepository.addTemplateToPersistence(architecture)
+    async execute(architectureDto: ArchitectureDto): Promise<any> {
+        try {
+            const architecture = ArchitectureMapper.toDomain(architectureDto)
+        return await this.architectureRepository.addTemplateToPersistence(architecture)
+        } catch (error) {
+            throw error
+        }
+        
     }
 }

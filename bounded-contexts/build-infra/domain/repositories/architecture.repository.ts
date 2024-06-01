@@ -1,13 +1,11 @@
 import { Architecture } from "../entities/architecture";
-import { ArchitectureStatus } from "../enums/architecture.status.enum";
-import { ProvidersEnum } from "../enums/providers.enum";
 
 export interface ArchitectureRepository {
-    addTemplateToPersistence(architecture: Architecture): void;
-    removeTemplateFromPersistence(architecture: Architecture): void;
-    updateTemplateFromPersistence(architecture: Architecture): void;
+    addTemplateToPersistence(architecture: Architecture): any
+    removeTemplateFromPersistence(id: string | number): any;
+    updateTemplateFromPersistence(id: string | number): any;
     
-    getArchisByOptions(options: {}): Architecture[]
-    getAllArchis(): Architecture[]
-    getOneArchiById(id: number): Architecture
+    getArchisByOptions(options: {}): Architecture[] | Promise<Architecture[]>
+    getAllArchis(): Architecture[] | Promise<Architecture[]>
+    getOneArchiById(id: string | number): Architecture | Promise<Architecture>
 }

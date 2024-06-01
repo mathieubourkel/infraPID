@@ -2,19 +2,19 @@ import { Architecture } from "../../domain/entities/architecture";
 import { ArchitectureDto } from "../dto/architecture.dto";
 
 export class ArchitectureMapper {
-    static toDomain(dto: ArchitectureDto): Architecture {
+    static toDomain(dto: any): Architecture {
         return new Architecture(dto.status, dto.provider, dto.description, dto.name, dto.resources)
     }
 
-    static toDomainWithId(dto: ArchitectureDto): Architecture {
+    static toDomainWithId(dto: any): Architecture {
         return new Architecture(dto.status, dto.provider, dto.description, dto.name, dto.resources, dto.id)
     }
 
-    static toDto(body: ArchitectureDto): ArchitectureDto{
+    static toDto(body: any): ArchitectureDto{
         return new ArchitectureDto(body.status, body.provider, body.description, body.name, body.resources)
     }
 
-    static toDtoWithId(body: ArchitectureDto): ArchitectureDto{
+    static toDtoWithId(body: any): ArchitectureDto{
         return new ArchitectureDto(body.status, body.provider, body.description, body.name, body.resources, body.id)
     }
 }

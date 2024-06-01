@@ -9,7 +9,7 @@ import { ArchitectureStatus } from "../../../../bounded-contexts/build-infra/dom
 
 
 export class ArchitectureController {
-    private dbRepository = new DB
+    private dbRepository = "ew DB"
     private addArchitectureTemplate = new AddArchiTemplateUseCase(this.dbRepository)
     private getAllArchitectureTemplate = new GetAllArchiTemplateUseCase(this.dbRepository)
     private updateArchitectureTemplate = new UpdateArchiTemplateUseCase(this.dbRepository)
@@ -25,13 +25,13 @@ export class ArchitectureController {
        }
     }
 
-    async getArchiTemplateById(req: FastifyRequest){
-        try {
-            await this.getOneArchitectureTemplate.execute(req.params.id)
-        } catch (error) {
-            throw error
-        }
-    }
+    // async getArchiTemplateById(req: FastifyRequest){
+    //     try {
+    //         await this.getOneArchitectureTemplate.execute(req.params.id)
+    //     } catch (error) {
+    //         throw error
+    //     }
+    // }
 
     async getFreeTemplates(){
         try {
@@ -49,28 +49,28 @@ export class ArchitectureController {
         }
     }
 
-    async add(req: FastifyRequest<{Body:any}>){
-        try {
-            await this.addArchitectureTemplate.execute(req.body)
-        } catch (error) {
-            throw error
-        }
-    }
+    // async add(req: FastifyRequest<{Body:any}>){
+    //     try {
+    //         await this.addArchitectureTemplate.execute(req.body)
+    //     } catch (error) {
+    //         throw error
+    //     }
+    // }
 
-    async modify(){
-        try {
-            await this.updateArchitectureTemplate.execute(req.body)
-        } catch (error) {
-            throw error
-        }
-    }
+    // async modify(){
+    //     try {
+    //         await this.updateArchitectureTemplate.execute(req.body)
+    //     } catch (error) {
+    //         throw error
+    //     }
+    // }
 
-    async remove(){
-        try {
-            await this.removeArchitectureTemplate.execute(req.body)
-        } catch (error) {
-            throw error
-        }
-    }
+    // async remove(){
+    //     try {
+    //         await this.removeArchitectureTemplate.execute(req.body)
+    //     } catch (error) {
+    //         throw error
+    //     }
+    // }
 
 }

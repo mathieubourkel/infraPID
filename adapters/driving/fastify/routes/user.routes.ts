@@ -3,11 +3,8 @@ import { CheckRoutesInterface, HTTPMethods } from "../interfaces/routes.interfac
 
 
 export class UserRoutes {
-    private readonly controller: UserController
-
-    constructor(){
-        this.controller = new UserController()
-    }
+    
+    private readonly controller = new UserController()
 
     getRoutes():CheckRoutesInterface<UserController> {
         return [

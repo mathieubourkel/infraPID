@@ -3,11 +3,8 @@ import { CheckRoutesInterface, HTTPMethods } from "../interfaces/routes.interfac
 
 
 export class TemplateRoutes {
-    private readonly controller: ArchitectureController
-
-    constructor(){
-        this.controller = new ArchitectureController()
-    }
+    
+    private readonly controller = new ArchitectureController()
 
     getRoutes():CheckRoutesInterface<ArchitectureController> {
         return [
@@ -18,13 +15,13 @@ export class TemplateRoutes {
                 action: "getAll",
                 middlewares: []
             },
-            {
-                method: HTTPMethods.GET,
-                path: "/template/:id",
-                controller: this.controller,
-                action: "getArchiTemplateById",
-                middlewares: []
-            },
+            // {
+            //     method: HTTPMethods.GET,
+            //     path: "/template/:id",
+            //     controller: this.controller,
+            //     action: "getArchiTemplateById",
+            //     middlewares: []
+            // },
             {
                 method: HTTPMethods.GET,
                 path: "/templates/free",
@@ -39,28 +36,28 @@ export class TemplateRoutes {
                 action: "getPayingTemplates",
                 middlewares: []
             },
-            {
-                method: HTTPMethods.POST,
-                path: "/template",
-                controller: this.controller,
-                action: "add",
-                middlewares: []
-            },
+            // {
+            //     method: HTTPMethods.POST,
+            //     path: "/template",
+            //     controller: this.controller,
+            //     action: "add",
+            //     middlewares: []
+            // },
 
-            {
-                method: HTTPMethods.PUT,
-                path: "/template/:id",
-                controller: this.controller,
-                action: "modify",
-                middlewares: []
-            },
-            {
-                method: HTTPMethods.DELETE,
-                path: "/template/:id",
-                controller: this.controller,
-                action: "remove",
-                middlewares: []
-            }
+            // {
+            //     method: HTTPMethods.PUT,
+            //     path: "/template/:id",
+            //     controller: this.controller,
+            //     action: "modify",
+            //     middlewares: []
+            // },
+            // {
+            //     method: HTTPMethods.DELETE,
+            //     path: "/template/:id",
+            //     controller: this.controller,
+            //     action: "remove",
+            //     middlewares: []
+            // }
         ]
     }
 }
