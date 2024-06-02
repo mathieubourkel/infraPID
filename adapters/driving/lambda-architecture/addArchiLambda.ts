@@ -10,8 +10,9 @@ const architectureRepository = new DynamoDbArchitectureRepository(DYNAMODB_TABLE
 export const handler:Handler = async (event:APIGatewayProxyEvent):Promise<APIGatewayProxyResult> => {
   
   try {
+    if (!event.body) throw "no body"
         const usecase = new AddArchiTemplateUseCase(architectureRepository)
-        const dto = ArchitectureMapper.toDto(JSON.parse(event.body) || "")
+        const dto = ArchitectureMapper.toDto(JSON.parse(event.body))
         const result = await usecase.execute(dto)
         return {
             statusCode: 201,

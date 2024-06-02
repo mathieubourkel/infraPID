@@ -12,11 +12,10 @@ stages:
 package:
   individually: true # Permet de créer un package pour chaque fonction
 
-custom:
+build:
   esbuild:
     bundle: true
     minify: true
-    sourcemap: true
     external:
       - aws-sdk
 provider:
@@ -33,9 +32,16 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: arn:aws:dynamodb:eu-west-3:066669404296:table/${self:service}-architectureTable-${sls:stage}
-
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:GetObject
+        - s3:DeleteObject
+      Resource: 
+        - "arn:aws:s3:::infrapid-bucket/*"
   environment:
     DYNAMODB_TABLE: ${self:service}-architectureTable-${sls:stage}
+    S3_BUCKET: infrapid-bucket
 
 functions:
   getAll:
@@ -77,6 +83,13 @@ functions:
           path: /template/:id
           method: put
 
+  buildInfra:
+    handler: buildInfraLambda.handler
+    events:
+      - httpApi:
+          path: /build-infra
+          method: post
+
 
 
 resources:
@@ -94,3 +107,7 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
+    S3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: infrapid-bucket

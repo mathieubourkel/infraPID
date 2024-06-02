@@ -1,5 +1,5 @@
 {
-  "name": "dynamodb-architecture",
+  "name": "tofilesystem",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,7 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.588.0",
-    "@aws-sdk/lib-dynamodb": "^3.588.0"
+  "devDependencies": {
+    "@types/node": "^20.13.0"
   }
 }

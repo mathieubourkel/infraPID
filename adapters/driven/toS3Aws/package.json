@@ -1,5 +1,5 @@
 {
-  "name": "dynamodb-architecture",
+  "name": "tos3aws",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.588.0",
-    "@aws-sdk/lib-dynamodb": "^3.588.0"
+    "@aws-sdk/client-s3": "^3.588.0"
   }
 }

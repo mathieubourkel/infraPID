@@ -1,9 +1,21 @@
 {
-  "extends": "../../../tsconfig.json",
+  "files": [],
+  "references": [
+    { "path": "./adapters/driven/toS3Aws" },
+    { "path": "./adapters/driven/toFileSystem" },
+    { "path": "./adapters/driven/dynamodb-architecture" },
+    { "path": "./adapters/driving/lambda-architecture" }
+  ],
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
+    "paths": {
+      "@toS3/*": ["./adapters/driven/toS3Aws/*"],
+      "@toFS/*": ["./adapters/driven/toFileSystem/*"],
+      "@dynamodb/*": ["./adapters/driven/dynamodb-architecture/*"],
+      "@lambda/*": ["./adapters/driving/lambda-architecture/*"]
+    },
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
