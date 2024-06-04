@@ -1,7 +1,7 @@
 import { Handler, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { AddArchiTemplateUseCase } from '../../../bounded-contexts/build-infra/app/use-cases/add-archi-template.usecase';
-import { DynamoDbArchitectureRepository } from '../../driven/dynamodb-architecture/dynamodb.repository';
-import { ArchitectureMapper } from '../../../bounded-contexts/build-infra/app/mappers/architecture.mapper';
+import { AddArchiTemplateUseCase } from '../../../../bounded-contexts/build-infra/app/use-cases/add-archi-template.usecase';
+import { DynamoDbArchitectureRepository } from '../../../driven/dynamodb/src/dynamodb.template.repository';
+import { ArchitectureMapper } from '../../../../bounded-contexts/build-infra/app/mappers/architecture.mapper';
 
 const DYNAMODB_TABLE = process.env.DYNAMODB_TABLE || ''
 const architectureRepository = new DynamoDbArchitectureRepository(DYNAMODB_TABLE)

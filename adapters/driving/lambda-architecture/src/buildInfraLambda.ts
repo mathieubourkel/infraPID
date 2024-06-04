@@ -1,10 +1,10 @@
 import { Handler, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { S3TerraformRepository } from '../../driven/toS3Aws/terraform-file.s3.repository';
-import { CreateFileInfraUseCase } from '../../../bounded-contexts/build-infra/app/use-cases/create-terraform.usecase';
-import { ProviderMapper } from '../../../bounded-contexts/build-infra/app/mappers/provider.mapper';
-import { ProviderDto } from '../../../bounded-contexts/build-infra/app/dto/provider.dto';
-import { ResourceDto } from '../../../bounded-contexts/build-infra/app/dto/resource.dto';
-import { ResourceMapper } from '../../../bounded-contexts/build-infra/app/mappers/resource.mapper';
+import { CreateFileInfraUseCase } from '../../../../bounded-contexts/build-infra/app/use-cases/create-terraform.usecase';
+import { ProviderMapper } from '../../../../bounded-contexts/build-infra/app/mappers/provider.mapper';
+import { ProviderDto } from '../../../../bounded-contexts/build-infra/app/dto/provider.dto';
+import { ResourceDto } from '../../../../bounded-contexts/build-infra/app/dto/resource.dto';
+import { ResourceMapper } from '../../../../bounded-contexts/build-infra/app/mappers/resource.mapper';
+import { S3TerraformRepository } from '../../../driven/toS3Aws/src/terraform-file.s3.repository';
 
 const S3_BUCKET = process.env.S3_BUCKET || ''
 const s3Repository = new S3TerraformRepository(S3_BUCKET)

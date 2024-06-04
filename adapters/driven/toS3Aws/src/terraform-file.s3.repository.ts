@@ -1,5 +1,5 @@
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { BuildInfraRepository } from '../../../bounded-contexts/build-infra/domain/repositories/build-infra.repository';
+import { BuildInfraRepository } from '../../../../bounded-contexts/build-infra/domain/repositories/build-infra.repository';
 
 export class S3TerraformRepository implements BuildInfraRepository {
 

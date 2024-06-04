@@ -10,7 +10,7 @@ stages:
   
 
 package:
-  individually: true # Permet de créer un package pour chaque fonction
+  individually: true 
 
 build:
   esbuild:
@@ -45,7 +45,7 @@ provider:
 
 functions:
   getAll:
-    handler: getAllArchiLambda.handler
+    handler: src/getAllArchiLambda.handler
     events:
       - httpApi:
           path: /templates/all
@@ -53,7 +53,7 @@ functions:
 
 
   getOneById:
-    handler: getOneByIdArchiLambda.handler
+    handler: src/getOneByIdArchiLambda.handler
     events:
       - httpApi:
           path: /template/:id
@@ -61,7 +61,7 @@ functions:
 
 
   add:
-    handler: addArchiLambda.handler
+    handler: src/addArchiLambda.handler
     events:
       - httpApi:
           path: /template
@@ -69,7 +69,7 @@ functions:
 
 
   delete:
-    handler: deleteArchiLambda.handler
+    handler: src/deleteArchiLambda.handler
     events:
       - httpApi:
           path: /template/:id
@@ -77,14 +77,14 @@ functions:
 
 
   update:
-    handler: updateArchiLambda.handler
+    handler: src/updateArchiLambda.handler
     events:
       - httpApi:
           path: /template/:id
           method: put
 
   buildInfra:
-    handler: buildInfraLambda.handler
+    handler: src/buildInfraLambda.handler
     events:
       - httpApi:
           path: /build-infra

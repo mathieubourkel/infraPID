@@ -3,7 +3,7 @@
   "references": [
     { "path": "./adapters/driven/toS3Aws" },
     { "path": "./adapters/driven/toFileSystem" },
-    { "path": "./adapters/driven/dynamodb-architecture" },
+    { "path": "./adapters/driven/dynamodb" },
     { "path": "./adapters/driving/lambda-architecture" }
   ],
   "compilerOptions": {
@@ -13,7 +13,7 @@
     "paths": {
       "@toS3/*": ["./adapters/driven/toS3Aws/*"],
       "@toFS/*": ["./adapters/driven/toFileSystem/*"],
-      "@dynamodb/*": ["./adapters/driven/dynamodb-architecture/*"],
+      "@dynamodb/*": ["adapters/driven/dynamodb/*"],
       "@lambda/*": ["./adapters/driving/lambda-architecture/*"]
     },
     "emitDecoratorMetadata": true,

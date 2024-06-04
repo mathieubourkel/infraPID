@@ -1,5 +1,5 @@
-import { ArchitectureRepository } from '../../../bounded-contexts/build-infra/domain/repositories/architecture.repository';
-import { Architecture } from '../../../bounded-contexts/build-infra/domain/entities/architecture';
+import { ArchitectureRepository } from '../../../../bounded-contexts/build-infra/domain/repositories/architecture.repository';
+import { Architecture } from '../../../../bounded-contexts/build-infra/domain/entities/architecture';
 import { DynamoDBDocumentClient, ScanCommand, PutCommand, GetCommand, DeleteCommand, DeleteCommandOutput, UpdateCommandOutput} from "@aws-sdk/lib-dynamodb";
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 
